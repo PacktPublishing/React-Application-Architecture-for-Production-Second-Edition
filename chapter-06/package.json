@@ -14,7 +14,7 @@
     "lint-staged": "lint-staged --config infra/lint-staged.config.js",
     "pre-commit": "npm run lint-staged",
     "prepare": "husky",
-    "storybook": "storybook dev -p 6006",
+    "storybook": "STORYBOOK=true storybook dev -p 6006",
     "build-storybook": "storybook build",
     "generate:openapi": "dotenv -e .env -- openapi-ts"
   },
