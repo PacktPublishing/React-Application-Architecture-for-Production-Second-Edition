@@ -1,0 +1,65 @@
+export default {
+  backToIdeas: 'Volver a Ideas',
+  createIdea: 'Crear Idea',
+  createNewIdea: 'Crear Nueva Idea',
+  deleteIdea: 'Eliminar Idea',
+  deleteIdeaConfirm:
+    '¿Estás seguro de que quieres eliminar "{{title}}"? Esta acción no se puede deshacer y también eliminará todas las reseñas de esta idea.',
+  detailedDescription: 'Descripción Detallada',
+  detailedDescriptionPlaceholder:
+    'Proporciona una descripción detallada de tu idea de IA. Incluye casos de uso, beneficios y detalles de implementación...',
+  discoverSubtitle:
+    'Explora y navega ideas innovadoras de aplicaciones de IA de la comunidad',
+  discoverTitle: 'Descubre Ideas de IA',
+  editIdea: 'Editar Idea',
+  editIdeaDescription: 'Actualiza los detalles de tu idea',
+  editIdeaTitle: 'Editar Idea',
+  filterByTags: 'Filtrar por etiquetas:',
+  sortBy: 'Ordenar por',
+  newest: 'Más Recientes',
+  oldest: 'Más Antiguas',
+  rating: 'Mejor Calificación',
+  reviews: 'Más Reseñas',
+  ideaNotFound: 'Idea no encontrada',
+  errorLoadingIdea: 'Error al Cargar la Idea',
+  ideasBy_one: '{{count}} Idea de {{username}}',
+  ideasBy_other: '{{count}} Ideas de {{username}}',
+  ideaTitlePlaceholder: 'Ingresa el título de tu idea...',
+  loadingTags: 'Cargando etiquetas...',
+  meta: {
+    discover: {
+      description:
+        'AIdeas - Explora y navega ideas innovadoras de aplicaciones de IA de la comunidad',
+      title: 'AIdeas - Descubre Ideas de IA',
+    },
+    myIdeas: {
+      description:
+        'AIdeas - Administra y rastrea tus ideas de aplicaciones de IA enviadas',
+      title: 'AIdeas - Mis Ideas',
+    },
+  },
+  myIdeasDescription: 'Administra y rastrea tus ideas enviadas',
+  myIdeasTitle: 'Mis Ideas',
+  newIdea: 'Nueva Idea',
+  noIdeasAvailable: 'No hay ideas disponibles aún',
+  noIdeasEmptyDescription:
+    '¡Vuelve más tarde o sé el primero en compartir una idea!',
+  noIdeasShared: '{{username}} aún no ha compartido ninguna idea.',
+  noIdeasYet: 'Aún no has creado ninguna idea.',
+  searchPlaceholder: 'Buscar ideas por título o descripción...',
+  shareYourAI: 'Comparte tu idea de aplicación de IA con la comunidad',
+  shortDescription: 'Descripción Breve',
+  shortDescriptionPlaceholder: 'Resumen breve de tu idea (1-2 oraciones)...',
+  tags: 'Etiquetas',
+  updateIdea: 'Actualizar Idea',
+  noTagsAvailable: 'No hay etiquetas disponibles',
+  ideaCreated: '¡Idea creada exitosamente!',
+  ideaCreateError: 'Error al crear la idea. Por favor, inténtalo de nuevo.',
+  ideaUpdated: '¡Idea actualizada exitosamente!',
+  ideaUpdateError:
+    'Error al actualizar la idea. Por favor, inténtalo de nuevo.',
+  ideaDeleted: '¡Idea eliminada exitosamente!',
+  ideaDeleteError: 'Error al eliminar la idea. Por favor, inténtalo de nuevo.',
+  loadMoreIdeas: 'Cargar más ideas',
+  loadingMoreIdeas: 'Cargando más ideas...',
+};
