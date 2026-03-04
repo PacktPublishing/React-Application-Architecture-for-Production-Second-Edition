@@ -19,7 +19,7 @@
     "postinstall": "npm run reset"
   },
   "dependencies": {
-    "@hono/node-server": "^1.18.1",
+    "@hono/node-server": "^1.19.10",
     "@hono/swagger-ui": "^0.5.2",
     "@hono/zod-openapi": "^1.0.2",
     "@libsql/client": "^0.15.10",
