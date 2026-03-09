@@ -1,0 +1,58 @@
+import { useQueryState, parseAsArrayOf, parseAsString } from 'nuqs';
+
+import { useDebouncedValue } from '@/hooks/use-debounced-value';
+
+export function useSearchAndFilters(debounceMs: number = 500) {
+  const [urlSearchTerm, setUrlSearchTerm] = useQueryState(
+    'search',
+    parseAsString.withDefault(''),
+  );
+
+  const [selectedTags, setSelectedTags] = useQueryState(
+    'tags',
+    parseAsArrayOf(parseAsString).withDefault([]),
+  );
+
+  const [sortBy, setSortBy] = useQueryState(
+    'sortBy',
+    parseAsString.withDefault(''),
+  );
+
+  const debouncedSearchTerm = useDebouncedValue(urlSearchTerm, debounceMs);
+
+  const toggleTag = (tag: string) => {
+    setSelectedTags((currentTags) => {
+      const newTags = currentTags.includes(tag)
+        ? currentTags.filter((t) => t !== tag)
+        : [...currentTags, tag];
+      return newTags.length > 0 ? newTags : null;
+    });
+  };
+
+  const clearFilters = () => {
+    setUrlSearchTerm('');
+    setSelectedTags(null);
+    setSortBy(null);
+  };
+
+  const hasActiveFilters =
+    selectedTags.length > 0 || urlSearchTerm.length > 0 || sortBy.length > 0;
+
+  return {
+    searchTerm: urlSearchTerm,
+    debouncedSearchTerm,
+    selectedTags,
+    sortBy,
+    params: {
+      ...(selectedTags.length > 0 && { tags: selectedTags.join(',') }),
+      ...(debouncedSearchTerm && { search: debouncedSearchTerm }),
+      ...(sortBy && { sortBy }),
+    },
+    hasActiveFilters,
+    setSearchTerm: setUrlSearchTerm,
+    setSelectedTags,
+    toggleTag,
+    setSortBy,
+    clearFilters,
+  };
+}
