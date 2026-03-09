@@ -67,8 +67,8 @@ export function DeleteReview({
         <AlertDialogFooter>
           <AlertDialogCancel>Cancel</AlertDialogCancel>
           <AlertDialogAction
+            variant="destructive"
             onClick={handleDelete}
-            className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
             disabled={deleteReviewMutation.isPending}
           >
             {deleteReviewMutation.isPending ? 'Deleting...' : 'Delete'}

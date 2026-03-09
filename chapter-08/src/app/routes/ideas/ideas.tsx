@@ -80,7 +80,7 @@ function Ideas() {
         ideas={allIdeas}
         isLoading={ideasInfiniteQuery.isLoading && allIdeas.length === 0}
         emptyMessage="No ideas available yet"
-        error={ideasInfiniteQuery.isError ? ideasInfiniteQuery.error : null}
+        error={ideasInfiniteQuery.error}
       />
 
       {allIdeas.length > 0 && ideasInfiniteQuery.hasNextPage && (

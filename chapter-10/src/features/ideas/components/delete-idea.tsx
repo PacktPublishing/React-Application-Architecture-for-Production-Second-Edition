@@ -78,8 +78,8 @@ export function DeleteIdea({
         <AlertDialogFooter>
           <AlertDialogCancel>{t('common:cancel')}</AlertDialogCancel>
           <AlertDialogAction
+            variant="destructive"
             onClick={handleDelete}
-            className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
             disabled={deleteIdeaMutation.isPending}
           >
             {deleteIdeaMutation.isPending

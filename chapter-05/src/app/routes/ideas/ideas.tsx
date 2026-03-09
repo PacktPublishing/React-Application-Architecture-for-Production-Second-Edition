@@ -51,7 +51,7 @@ function Ideas() {
         ideas={allIdeas}
         isLoading={ideasQuery.isLoading && allIdeas.length === 0}
         emptyMessage={'No ideas available yet'}
-        error={ideasQuery.isError ? ideasQuery.error : null}
+        error={ideasQuery.error}
       />
     </div>
   );

@@ -35,14 +35,14 @@ export function IdeaActions({ idea }: IdeaActionsProps) {
             </Button>
           }
         />
-        <DropdownMenuContent align="end">
+        <DropdownMenuContent align="end" className="w-36">
           <DropdownMenuItem onClick={handleEditClick}>
             <Edit className="h-4 w-4 mr-2" />
             Edit Idea
           </DropdownMenuItem>
           <DropdownMenuItem
             onClick={() => setShowDeleteDialog(true)}
-            className="text-destructive focus:text-destructive"
+            variant="destructive"
           >
             <Trash2 className="h-4 w-4 mr-2" />
             Delete Idea
