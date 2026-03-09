@@ -1,6 +1,7 @@
 import js from '@eslint/js';
 import typescript from '@typescript-eslint/eslint-plugin';
 import typescriptParser from '@typescript-eslint/parser';
+import { defineConfig } from 'eslint/config';
 import prettierConfig from 'eslint-config-prettier';
 import checkFile from 'eslint-plugin-check-file';
 import importPlugin from 'eslint-plugin-import';
@@ -12,10 +13,10 @@ import globals from 'globals';
 
 import { importRules } from './infra/eslint-import-rules.js';
 
-export default [
+export default defineConfig([
   js.configs.recommended,
   {
-    ignores: ['.react-router/**', 'build/**', 'dist/**', 'node_modules/**'],
+    ignores: ['.react-router/**', 'build/**', 'storybook-static/**'],
   },
   {
     files: ['eslint.config.js'],
@@ -109,16 +110,5 @@ export default [
       },
     },
   },
-  {
-    files: ['**/*.{test,spec}.{js,jsx,ts,tsx}'],
-    languageOptions: {
-      globals: {
-        ...globals.browser,
-        ...globals.es2022,
-        ...globals.node,
-        React: 'readonly',
-      },
-    },
-  },
   ...storybook.configs['flat/recommended'],
-];
+]);

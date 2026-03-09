@@ -1,0 +1,76 @@
+name: Continuous Integration
+on:
+  - push
+  - pull_request
+jobs:
+  code-checks:
+    name: Code Checks
+    runs-on: ubuntu-latest
+    defaults:
+        run:
+          working-directory: ./chapter-12
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run typecheck
+      - run: npm run format:check
+  unit-tests:
+    name: Unit Tests
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./chapter-12
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+      - run: npm ci
+      - run: cp .env.example .env
+      - run: npm run test:unit
+  integration-tests:
+    name: Integration Tests
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./chapter-12
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+      - run: npm ci
+      - run: npx playwright install --with-deps
+      - run: cp .env.example .env
+      - run: npm run test:integration
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: playwright-report-integration
+          path: chapter-12/playwright-report/
+          retention-days: 30
+  e2e-tests:
+    name: E2E Tests
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./chapter-12
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+      - run: npm ci
+      - run: npx playwright install --with-deps
+      - run: cp .env.example .env
+      - run: npm run test:e2e
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: playwright-report-e2e
+          path: chapter-12/playwright-report/
+          retention-days: 30

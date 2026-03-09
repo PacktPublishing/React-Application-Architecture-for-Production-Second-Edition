@@ -1,0 +1,21 @@
+name: Continuous Deployment
+run-name: ${{ github.event.workflow_run.head_commit.message }}
+on:
+  workflow_run:
+    workflows: [Continuous Integration]
+    branches: [main]
+    types: [completed]
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    if: github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'push'
+    env:
+      RENDER_SERVICE_ID: ${{ secrets.RENDER_SERVICE_ID }}
+      RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
+    steps:
+      - if: env.RENDER_SERVICE_ID != '' && env.RENDER_API_KEY != ''
+        uses: JorgeLNJunior/render-deploy@v1.5.0
+        with:
+          service_id: ${{ secrets.RENDER_SERVICE_ID }}
+          api_key: ${{ secrets.RENDER_API_KEY }}
+          wait_deploy: true
