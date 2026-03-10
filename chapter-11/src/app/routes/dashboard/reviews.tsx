@@ -28,7 +28,7 @@ export default function MyReviewsPage() {
         <ReviewsList
           reviews={reviews}
           isLoading={reviewsQuery.isLoading}
-          showIdeaTitle={true}
+          showIdeaTitle
           emptyMessage={t('reviews:noReviewsYetDescription')}
           error={reviewsQuery.error}
         />

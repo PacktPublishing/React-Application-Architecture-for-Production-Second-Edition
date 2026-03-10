@@ -23,7 +23,7 @@ export default function MyReviewsPage() {
         <ReviewsList
           reviews={reviews}
           isLoading={reviewsQuery.isLoading}
-          showIdeaTitle={true}
+          showIdeaTitle
           emptyMessage="You haven't written any reviews yet. Explore ideas and share your feedback!"
           error={reviewsQuery.error}
         />

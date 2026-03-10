@@ -19,7 +19,7 @@ export function UserReviews({ username }: UserReviewsProps) {
       <ReviewsList
         reviews={reviews}
         isLoading={reviewsQuery.isLoading}
-        showIdeaTitle={true}
+        showIdeaTitle
         emptyMessage={`${username} hasn't written any reviews yet.`}
         error={reviewsQuery.error}
       />
