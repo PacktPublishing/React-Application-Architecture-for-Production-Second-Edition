@@ -6,14 +6,14 @@ import { useUser } from '@/features/auth/hooks/use-user';
 
 export default function Layout() {
   const user = useUser();
-  const logoutUserMutation = useLogoutUserMutation();
   const navigate = useNavigate();
+  const logoutUserMutation = useLogoutUserMutation({
+    options: {
+      onSuccess: () => navigate('/'),
+    },
+  });
   const handleLogout = async () => {
-    logoutUserMutation.mutate(undefined, {
-      onSuccess: () => {
-        navigate('/');
-      },
-    });
+    logoutUserMutation.mutate();
   };
 
   return (

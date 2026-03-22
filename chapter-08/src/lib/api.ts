@@ -88,12 +88,13 @@ async function fetchApi<T, TBody = unknown>(
 
   let response = await makeRequest();
 
-  if (
+  const isAuthenticationError =
     !response.ok &&
     response.status === 401 &&
     !url.endsWith('/auth/login') &&
-    !url.endsWith('/auth/register')
-  ) {
+    !url.endsWith('/auth/register');
+
+  if (isAuthenticationError) {
     const cookieHeader = headers.Cookie;
 
     try {

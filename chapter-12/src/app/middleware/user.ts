@@ -19,14 +19,6 @@ export const userMiddleware: MiddlewareFunction = async (
   { request, context },
   next,
 ) => {
-  try {
-    const existingUser = context.get(userContext);
-
-    if (existingUser !== undefined) {
-      return next();
-    }
-  } catch {}
-
   if (!hasAuthCookies(request)) {
     context.set(userContext, null);
     return next();

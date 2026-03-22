@@ -6,11 +6,7 @@ export const protectedMiddleware: MiddlewareFunction = async (
   { context },
   next,
 ) => {
-  let user = null;
-
-  try {
-    user = context.get(userContext);
-  } catch {}
+  const user = context.get(userContext);
 
   if (!user) {
     throw redirect('/auth/login');
