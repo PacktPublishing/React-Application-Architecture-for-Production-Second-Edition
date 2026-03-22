@@ -2,7 +2,7 @@ import { env } from '@/config/env';
 import type { RefreshTokenResponse } from '@/types/generated/types.gen';
 
 type RequestOptions<TBody = unknown> = {
-  method?: string;
+  method?: 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE';
   headers?: Record<string, string>;
   body?: TBody;
   params?: Record<string, string | number | boolean | undefined | null>;
@@ -110,7 +110,9 @@ async function fetchApi<T, TBody = unknown>(
     try {
       const errorData = await response.json();
       message = errorData.message || message;
-    } catch {}
+    } catch {
+      // response body may not be JSON, use the statusText as the message instead
+    }
 
     throw new Error(message);
   }
