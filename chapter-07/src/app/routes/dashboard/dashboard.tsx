@@ -2,7 +2,7 @@ import { Home, MessageSquare, Lightbulb, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router';
 
 import { Seo } from '@/components/seo';
-import { Button } from '@/components/ui/button';
+import { buttonVariants } from '@/components/ui/button';
 import {
   Card,
   CardContent,
@@ -11,6 +11,7 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import { useAuthorization } from '@/features/auth/hooks/use-authorization';
+import { cn } from '@/lib/utils';
 
 export default function DashboardPage() {
   const { canCreateIdea } = useAuthorization();
@@ -41,17 +42,25 @@ export default function DashboardPage() {
               </CardDescription>
             </CardHeader>
             <CardContent className="flex flex-col space-y-3">
-              <Link to="/dashboard/ideas">
-                <Button className="w-full" variant="default">
-                  View All Ideas
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
+              <Link
+                to="/dashboard/ideas"
+                className={cn(
+                  buttonVariants({ variant: 'default' }),
+                  'w-full gap-2',
+                )}
+              >
+                View All Ideas
+                <ArrowRight className="h-4 w-4" />
               </Link>
               {canCreateIdea() && (
-                <Link to="/dashboard/ideas/new">
-                  <Button className="w-full bg-transparent" variant="outline">
-                    Create New Idea
-                  </Button>
+                <Link
+                  to="/dashboard/ideas/new"
+                  className={cn(
+                    buttonVariants({ variant: 'outline' }),
+                    'w-full bg-transparent',
+                  )}
+                >
+                  Create New Idea
                 </Link>
               )}
             </CardContent>
@@ -70,11 +79,15 @@ export default function DashboardPage() {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <Link to="/dashboard/reviews">
-                <Button className="w-full" variant="default">
-                  View All Reviews
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
+              <Link
+                to="/dashboard/reviews"
+                className={cn(
+                  buttonVariants({ variant: 'default' }),
+                  'w-full gap-2',
+                )}
+              >
+                View All Reviews
+                <ArrowRight className="h-4 w-4" />
               </Link>
             </CardContent>
           </Card>
@@ -91,11 +104,15 @@ export default function DashboardPage() {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <Link to="/ideas">
-              <Button variant="outline" className="w-full bg-transparent">
-                Browse All Ideas
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
+            <Link
+              to="/ideas"
+              className={cn(
+                buttonVariants({ variant: 'outline' }),
+                'w-full bg-transparent gap-2',
+              )}
+            >
+              Browse All Ideas
+              <ArrowRight className="h-4 w-4" />
             </Link>
           </CardContent>
         </Card>

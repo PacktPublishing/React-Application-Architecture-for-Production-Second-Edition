@@ -3,11 +3,12 @@ import { data as routerData, Link } from 'react-router';
 
 import { ErrorMessage } from '@/components/error-message';
 import { Seo } from '@/components/seo';
-import { Button } from '@/components/ui/button';
+import { buttonVariants } from '@/components/ui/button';
 import { getIdeaById } from '@/features/ideas/api/get-idea-by-id';
 import { IdeaDetails } from '@/features/ideas/components/idea-details';
 import { getReviewsByIdea } from '@/features/reviews/api/get-reviews-by-idea';
 import { ReviewsList } from '@/features/reviews/components/reviews-list';
+import { cn } from '@/lib/utils';
 
 import type { Route } from './+types/idea';
 
@@ -62,11 +63,15 @@ export function ErrorBoundary({ error }: { error: Error }) {
       <div className="space-y-6">
         <ErrorMessage error={error} title="Error Loading Idea" />
         <div className="flex justify-center">
-          <Link to="/ideas">
-            <Button variant="outline" size="lg">
-              <Lightbulb className="h-4 w-4 mr-2" />
-              Back to Ideas
-            </Button>
+          <Link
+            to="/ideas"
+            className={cn(
+              buttonVariants({ variant: 'outline', size: 'lg' }),
+              'gap-2',
+            )}
+          >
+            <Lightbulb className="h-4 w-4" />
+            Back to Ideas
           </Link>
         </div>
       </div>

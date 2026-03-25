@@ -3,8 +3,9 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router';
 
 import { Seo } from '@/components/seo';
-import { Button } from '@/components/ui/button';
+import { Button, buttonVariants } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
+import { cn } from '@/lib/utils';
 
 export default function NotFound() {
   const { t } = useTranslation(['notFound', 'ideas', 'dashboard', 'common']);
@@ -37,27 +38,23 @@ export default function NotFound() {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-3 justify-center pt-4">
-              <Button
-                size="lg"
-                className="gap-2"
-                render={
-                  <Link to="/">
-                    <Home className="h-4 w-4" />
-                    {t('notFound:goHome')}
-                  </Link>
-                }
-              />
-              <Button
-                variant="outline"
-                size="lg"
-                className="gap-2 bg-transparent"
-                render={
-                  <Link to="/ideas">
-                    <Search className="h-4 w-4" />
-                    {t('notFound:exploreIdeas')}
-                  </Link>
-                }
-              />
+              <Link
+                to="/"
+                className={cn(buttonVariants({ size: 'lg' }), 'gap-2')}
+              >
+                <Home className="h-4 w-4" />
+                {t('notFound:goHome')}
+              </Link>
+              <Link
+                to="/ideas"
+                className={cn(
+                  buttonVariants({ variant: 'outline', size: 'lg' }),
+                  'gap-2 bg-transparent',
+                )}
+              >
+                <Search className="h-4 w-4" />
+                {t('notFound:exploreIdeas')}
+              </Link>
             </div>
 
             <div className="pt-8 border-t">
@@ -65,31 +62,24 @@ export default function NotFound() {
                 {t('notFound:quickLinksTitle')}
               </p>
               <div className="flex flex-wrap gap-2 justify-center">
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  render={
-                    <Link to="/dashboard/ideas">{t('notFound:myIdeas')}</Link>
-                  }
-                />
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  render={
-                    <Link to="/dashboard/ideas/new">
-                      {t('notFound:createIdea')}
-                    </Link>
-                  }
-                />
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  render={
-                    <Link to="/dashboard/reviews">
-                      {t('notFound:myReviews')}
-                    </Link>
-                  }
-                />
+                <Link
+                  to="/dashboard/ideas"
+                  className={buttonVariants({ variant: 'ghost', size: 'sm' })}
+                >
+                  {t('notFound:myIdeas')}
+                </Link>
+                <Link
+                  to="/dashboard/ideas/new"
+                  className={buttonVariants({ variant: 'ghost', size: 'sm' })}
+                >
+                  {t('notFound:createIdea')}
+                </Link>
+                <Link
+                  to="/dashboard/reviews"
+                  className={buttonVariants({ variant: 'ghost', size: 'sm' })}
+                >
+                  {t('notFound:myReviews')}
+                </Link>
               </div>
             </div>
 

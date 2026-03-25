@@ -3,10 +3,11 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router';
 
 import { Seo } from '@/components/seo';
-import { Button } from '@/components/ui/button';
+import { buttonVariants } from '@/components/ui/button';
 import { useAuthorization } from '@/features/auth/hooks/use-authorization';
 import { useCurrentUserIdeasQuery } from '@/features/ideas/api/get-current-user-ideas';
 import { IdeasList } from '@/features/ideas/components/ideas-list';
+import { cn } from '@/lib/utils';
 
 export default function MyIdeasPage() {
   const { t } = useTranslation(['ideas']);
@@ -32,11 +33,12 @@ export default function MyIdeasPage() {
             </p>
           </div>
           {canCreateIdea() && (
-            <Link to="/dashboard/ideas/new">
-              <Button>
-                <Plus className="mr-2 h-4 w-4" />
-                {t('ideas:newIdea')}
-              </Button>
+            <Link
+              to="/dashboard/ideas/new"
+              className={cn(buttonVariants(), 'gap-2')}
+            >
+              <Plus className="h-4 w-4" />
+              {t('ideas:newIdea')}
             </Link>
           )}
         </div>

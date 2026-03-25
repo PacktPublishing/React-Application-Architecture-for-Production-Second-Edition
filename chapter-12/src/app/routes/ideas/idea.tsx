@@ -5,7 +5,7 @@ import { data as routerData, Link } from 'react-router';
 
 import { ErrorMessage } from '@/components/error-message';
 import { Seo } from '@/components/seo';
-import { Button } from '@/components/ui/button';
+import { buttonVariants } from '@/components/ui/button';
 import { useAuthorization } from '@/features/auth/hooks/use-authorization';
 import {
   getIdeaById,
@@ -19,6 +19,7 @@ import {
 import { CreateReview } from '@/features/reviews/components/create-review';
 import { ReviewsList } from '@/features/reviews/components/reviews-list';
 import { ReviewsSkeleton } from '@/features/reviews/components/reviews-skeleton';
+import { cn } from '@/lib/utils';
 import type { ReviewListResponse, Idea } from '@/types/generated/types.gen';
 
 import type { Route } from './+types/idea';
@@ -114,16 +115,16 @@ export function ErrorBoundary({ error }: { error: Error }) {
       <div className="space-y-6">
         <ErrorMessage error={error} title={t('ideas:errorLoadingIdea')} />
         <div className="flex justify-center">
-          <Button
-            variant="outline"
-            size="lg"
-            render={
-              <Link to="/ideas" className="gap-2">
-                <Lightbulb className="h-4 w-4" aria-hidden="true" />
-                {t('ideas:backToIdeas')}
-              </Link>
-            }
-          />
+          <Link
+            to="/ideas"
+            className={cn(
+              buttonVariants({ variant: 'outline', size: 'lg' }),
+              'gap-2',
+            )}
+          >
+            <Lightbulb className="h-4 w-4" aria-hidden="true" />
+            {t('ideas:backToIdeas')}
+          </Link>
         </div>
       </div>
     </div>

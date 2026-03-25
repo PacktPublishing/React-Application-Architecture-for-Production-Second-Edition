@@ -2,8 +2,9 @@ import { Home, Lightbulb, Search, ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router';
 
 import { Seo } from '@/components/seo';
-import { Button } from '@/components/ui/button';
+import { Button, buttonVariants } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
+import { cn } from '@/lib/utils';
 
 export default function NotFound() {
   return (
@@ -35,27 +36,23 @@ export default function NotFound() {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-3 justify-center pt-4">
-              <Button
-                size="lg"
-                className="gap-2"
-                render={
-                  <Link to="/">
-                    <Home className="h-4 w-4" />
-                    Go Home
-                  </Link>
-                }
-              />
-              <Button
-                variant="outline"
-                size="lg"
-                className="gap-2 bg-transparent"
-                render={
-                  <Link to="/ideas">
-                    <Search className="h-4 w-4" />
-                    Explore Ideas
-                  </Link>
-                }
-              />
+              <Link
+                to="/"
+                className={cn(buttonVariants({ size: 'lg' }), 'gap-2')}
+              >
+                <Home className="h-4 w-4" />
+                Go Home
+              </Link>
+              <Link
+                to="/ideas"
+                className={cn(
+                  buttonVariants({ variant: 'outline', size: 'lg' }),
+                  'gap-2 bg-transparent',
+                )}
+              >
+                <Search className="h-4 w-4" />
+                Explore Ideas
+              </Link>
             </div>
 
             <div className="pt-8 border-t">
@@ -63,21 +60,24 @@ export default function NotFound() {
                 Or try these popular pages:
               </p>
               <div className="flex flex-wrap gap-2 justify-center">
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  render={<Link to="/dashboard/ideas">My Ideas</Link>}
-                />
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  render={<Link to="/dashboard/ideas/new">Create Idea</Link>}
-                />
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  render={<Link to="/dashboard/reviews">My Reviews</Link>}
-                />
+                <Link
+                  to="/dashboard/ideas"
+                  className={buttonVariants({ variant: 'ghost', size: 'sm' })}
+                >
+                  My Ideas
+                </Link>
+                <Link
+                  to="/dashboard/ideas/new"
+                  className={buttonVariants({ variant: 'ghost', size: 'sm' })}
+                >
+                  Create Idea
+                </Link>
+                <Link
+                  to="/dashboard/reviews"
+                  className={buttonVariants({ variant: 'ghost', size: 'sm' })}
+                >
+                  My Reviews
+                </Link>
               </div>
             </div>
 

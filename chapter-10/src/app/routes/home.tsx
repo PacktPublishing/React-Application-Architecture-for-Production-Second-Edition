@@ -3,8 +3,9 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router';
 
 import { Seo } from '@/components/seo';
-import { Button } from '@/components/ui/button';
+import { buttonVariants } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { cn } from '@/lib/utils';
 
 export default function HomePage() {
   const { t } = useTranslation(['home']);
@@ -23,17 +24,21 @@ export default function HomePage() {
           {t('home:subtitle')}
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button
-            size="lg"
-            className="w-full sm:w-auto"
-            render={<Link to="/ideas">{t('home:getStarted')}</Link>}
-          />
-          <Button
-            variant="outline"
-            size="lg"
-            className="w-full sm:w-auto bg-transparent"
-            render={<Link to="/about">{t('home:learnMore')}</Link>}
-          />
+          <Link
+            to="/ideas"
+            className={cn(buttonVariants({ size: 'lg' }), 'w-full sm:w-auto')}
+          >
+            {t('home:getStarted')}
+          </Link>
+          <Link
+            to="/about"
+            className={cn(
+              buttonVariants({ variant: 'outline', size: 'lg' }),
+              'w-full sm:w-auto bg-transparent',
+            )}
+          >
+            {t('home:learnMore')}
+          </Link>
         </div>
       </div>
 

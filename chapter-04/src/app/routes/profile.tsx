@@ -2,7 +2,7 @@ import { data as routerData, Link } from 'react-router';
 
 import { ErrorMessage } from '@/components/error-message';
 import { Seo } from '@/components/seo';
-import { Button } from '@/components/ui/button';
+import { buttonVariants } from '@/components/ui/button';
 import { UserIdeas } from '@/features/ideas/components/user-ideas';
 import { getProfileByUsername } from '@/features/profile/api/get-profile-by-username';
 import { ProfileDetails } from '@/features/profile/components/profile-details';
@@ -51,10 +51,11 @@ export function ErrorBoundary({ error }: { error: Error }) {
       <div className="space-y-6">
         <ErrorMessage error={error} title="Error loading profile" />
         <div className="flex justify-center">
-          <Link to="/">
-            <Button variant="outline" size="lg">
-              Go Home
-            </Button>
+          <Link
+            to="/"
+            className={buttonVariants({ variant: 'outline', size: 'lg' })}
+          >
+            Go Home
           </Link>
         </div>
       </div>

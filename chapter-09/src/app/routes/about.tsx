@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router';
 
 import { Seo } from '@/components/seo';
-import { Button } from '@/components/ui/button';
+import { buttonVariants } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 
 export default function AboutPage() {
@@ -138,13 +138,14 @@ export default function AboutPage() {
       </div>
 
       <div className="text-center space-x-4">
-        <Link to="/">
-          <Button variant="outline" size="lg">
-            {t('about:cta.backToHome')}
-          </Button>
+        <Link
+          to="/"
+          className={buttonVariants({ variant: 'outline', size: 'lg' })}
+        >
+          {t('about:cta.backToHome')}
         </Link>
-        <Link to="/ideas">
-          <Button size="lg">{t('about:cta.exploreIdeas')}</Button>
+        <Link to="/ideas" className={buttonVariants({ size: 'lg' })}>
+          {t('about:cta.exploreIdeas')}
         </Link>
       </div>
     </div>

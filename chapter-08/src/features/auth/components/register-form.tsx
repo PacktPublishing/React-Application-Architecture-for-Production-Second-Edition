@@ -28,17 +28,16 @@ export function RegisterForm({
 }: RegisterFormProps) {
   const form = useForm<RegisterUserData['body']>({
     resolver: zodResolver(zRegisterUserData.shape.body),
+    defaultValues: {
+      username: '',
+      email: '',
+      password: '',
+    },
   });
 
   return (
     <Form {...form}>
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          form.handleSubmit(onSubmit)(e);
-        }}
-        className="space-y-4"
-      >
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
         <FormField
           control={form.control}
           name="username"

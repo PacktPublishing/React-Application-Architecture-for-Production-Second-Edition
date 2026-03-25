@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router';
 
 import { Seo } from '@/components/seo';
-import { Button } from '@/components/ui/button';
+import { buttonVariants } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 
 export default function AboutPage() {
@@ -138,15 +138,15 @@ export default function AboutPage() {
       </div>
 
       <div className="text-center flex flex-wrap gap-4 justify-center">
-        <Button
-          variant="outline"
-          size="lg"
-          render={<Link to="/">{t('about:cta.backToHome')}</Link>}
-        />
-        <Button
-          size="lg"
-          render={<Link to="/ideas">{t('about:cta.exploreIdeas')}</Link>}
-        />
+        <Link
+          to="/"
+          className={buttonVariants({ variant: 'outline', size: 'lg' })}
+        >
+          {t('about:cta.backToHome')}
+        </Link>
+        <Link to="/ideas" className={buttonVariants({ size: 'lg' })}>
+          {t('about:cta.exploreIdeas')}
+        </Link>
       </div>
     </div>
   );

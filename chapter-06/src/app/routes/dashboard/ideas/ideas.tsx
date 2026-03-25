@@ -2,9 +2,10 @@ import { Plus } from 'lucide-react';
 import { Link } from 'react-router';
 
 import { Seo } from '@/components/seo';
-import { Button } from '@/components/ui/button';
+import { buttonVariants } from '@/components/ui/button';
 import { useCurrentUserIdeasQuery } from '@/features/ideas/api/get-current-user-ideas';
 import { IdeasList } from '@/features/ideas/components/ideas-list';
+import { cn } from '@/lib/utils';
 
 export default function MyIdeasPage() {
   const ideasQuery = useCurrentUserIdeasQuery();
@@ -24,11 +25,12 @@ export default function MyIdeasPage() {
               Manage and track your submitted ideas
             </p>
           </div>
-          <Link to="/dashboard/ideas/new">
-            <Button>
-              <Plus className="mr-2 h-4 w-4" />
-              New Idea
-            </Button>
+          <Link
+            to="/dashboard/ideas/new"
+            className={cn(buttonVariants(), 'gap-2')}
+          >
+            <Plus className="h-4 w-4" />
+            New Idea
           </Link>
         </div>
 

@@ -2,7 +2,7 @@ import { Lightbulb, Users, MessageSquare, Sparkles } from 'lucide-react';
 import { Link } from 'react-router';
 
 import { Seo } from '@/components/seo';
-import { Button } from '@/components/ui/button';
+import { buttonVariants } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 
 export default function AboutPage() {
@@ -130,13 +130,14 @@ export default function AboutPage() {
       </div>
 
       <div className="text-center space-x-4">
-        <Link to="/">
-          <Button variant="outline" size="lg">
-            Back to Home
-          </Button>
+        <Link
+          to="/"
+          className={buttonVariants({ variant: 'outline', size: 'lg' })}
+        >
+          Back to Home
         </Link>
-        <Link to="/ideas">
-          <Button size="lg">Explore Ideas</Button>
+        <Link to="/ideas" className={buttonVariants({ size: 'lg' })}>
+          Explore Ideas
         </Link>
       </div>
     </div>

@@ -10,7 +10,7 @@ import {
 import { useTranslation } from 'react-i18next';
 import { Link, NavLink } from 'react-router';
 
-import { Button } from '@/components/ui/button';
+import { Button, buttonVariants } from '@/components/ui/button';
 import {
   Sheet,
   SheetContent,
@@ -88,27 +88,25 @@ export function Navigation({ user, onLogout }: NavigationProps) {
     </Button>
   ) : (
     <>
-      <Button
-        variant="outline"
-        size="sm"
-        className="flex items-center gap-2 w-full bg-transparent"
-        render={
-          <Link to="/auth/login" className="w-full md:w-auto">
-            <LogIn className="h-4 w-4" aria-hidden="true" />{' '}
-            {t('navigation:login')}
-          </Link>
-        }
-      />
-      <Button
-        size="sm"
-        className="flex items-center gap-2 w-full"
-        render={
-          <Link to="/auth/register" className="w-full md:w-auto">
-            <UserPlus className="h-4 w-4" aria-hidden="true" />{' '}
-            {t('navigation:register')}
-          </Link>
-        }
-      />
+      <Link
+        to="/auth/login"
+        className={cn(
+          buttonVariants({ variant: 'outline', size: 'sm' }),
+          'flex items-center gap-2 w-full bg-transparent md:w-auto',
+        )}
+      >
+        <LogIn className="h-4 w-4" aria-hidden="true" /> {t('navigation:login')}
+      </Link>
+      <Link
+        to="/auth/register"
+        className={cn(
+          buttonVariants({ variant: 'default', size: 'sm' }),
+          'flex items-center gap-2 w-full md:w-auto',
+        )}
+      >
+        <UserPlus className="h-4 w-4" aria-hidden="true" />{' '}
+        {t('navigation:register')}
+      </Link>
     </>
   );
 

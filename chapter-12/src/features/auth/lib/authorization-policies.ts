@@ -29,11 +29,17 @@ export const ReviewPolicies = {
     existingReviews?: Review[],
   ): boolean => {
     const isAuthenticated = !!currentUser;
-    const isIdeaAuthor = currentUser?.id === idea.authorId;
-    const hasAlreadyReviewed =
-      existingReviews?.some((review) => review.authorId === currentUser?.id) ??
-      false;
-    return isAuthenticated && !isIdeaAuthor && !hasAlreadyReviewed;
+    if (!isAuthenticated) return false;
+
+    const isIdeaAuthor = currentUser.id === idea.authorId;
+    if (isIdeaAuthor) return false;
+
+    const hasAlreadyReviewed = existingReviews?.some(
+      (review) => review.authorId === currentUser.id,
+    );
+    if (hasAlreadyReviewed) return false;
+
+    return true;
   },
 
   canEdit: (currentUser: CurrentUser | null, review: Review): boolean => {

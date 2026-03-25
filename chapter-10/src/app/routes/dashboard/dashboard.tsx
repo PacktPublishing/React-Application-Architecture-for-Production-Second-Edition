@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router';
 
 import { Seo } from '@/components/seo';
-import { Button } from '@/components/ui/button';
+import { buttonVariants } from '@/components/ui/button';
 import {
   Card,
   CardContent,
@@ -12,6 +12,7 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import { useAuthorization } from '@/features/auth/hooks/use-authorization';
+import { cn } from '@/lib/utils';
 
 export default function DashboardPage() {
   const { t } = useTranslation(['dashboard']);
@@ -43,26 +44,26 @@ export default function DashboardPage() {
               </CardDescription>
             </CardHeader>
             <CardContent className="flex flex-col space-y-3">
-              <Button
-                className="w-full"
-                variant="default"
-                render={
-                  <Link to="/dashboard/ideas" className="gap-2">
-                    {t('dashboard:myIdeas.viewAll')}
-                    <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                  </Link>
-                }
-              />
+              <Link
+                to="/dashboard/ideas"
+                className={cn(
+                  buttonVariants({ variant: 'default' }),
+                  'w-full gap-2',
+                )}
+              >
+                {t('dashboard:myIdeas.viewAll')}
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              </Link>
               {canCreateIdea() && (
-                <Button
-                  className="w-full bg-transparent"
-                  variant="outline"
-                  render={
-                    <Link to="/dashboard/ideas/new">
-                      {t('dashboard:myIdeas.create')}
-                    </Link>
-                  }
-                />
+                <Link
+                  to="/dashboard/ideas/new"
+                  className={cn(
+                    buttonVariants({ variant: 'outline' }),
+                    'w-full bg-transparent',
+                  )}
+                >
+                  {t('dashboard:myIdeas.create')}
+                </Link>
               )}
             </CardContent>
           </Card>
@@ -80,16 +81,16 @@ export default function DashboardPage() {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <Button
-                className="w-full"
-                variant="default"
-                render={
-                  <Link to="/dashboard/reviews" className="gap-2">
-                    {t('dashboard:myReviews.viewAll')}
-                    <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                  </Link>
-                }
-              />
+              <Link
+                to="/dashboard/reviews"
+                className={cn(
+                  buttonVariants({ variant: 'default' }),
+                  'w-full gap-2',
+                )}
+              >
+                {t('dashboard:myReviews.viewAll')}
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              </Link>
             </CardContent>
           </Card>
         </div>
@@ -105,16 +106,16 @@ export default function DashboardPage() {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <Button
-              variant="outline"
-              className="w-full bg-transparent"
-              render={
-                <Link to="/ideas" className="gap-2">
-                  {t('dashboard:explore.browse')}
-                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                </Link>
-              }
-            />
+            <Link
+              to="/ideas"
+              className={cn(
+                buttonVariants({ variant: 'outline' }),
+                'w-full bg-transparent gap-2',
+              )}
+            >
+              {t('dashboard:explore.browse')}
+              <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </Link>
           </CardContent>
         </Card>
       </div>

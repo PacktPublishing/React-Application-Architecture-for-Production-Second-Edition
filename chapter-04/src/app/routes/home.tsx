@@ -2,8 +2,9 @@ import { Lightbulb, Share, MessageSquare } from 'lucide-react';
 import { Link } from 'react-router';
 
 import { Seo } from '@/components/seo';
-import { Button } from '@/components/ui/button';
+import { buttonVariants } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { cn } from '@/lib/utils';
 
 export default function HomePage() {
   return (
@@ -22,19 +23,20 @@ export default function HomePage() {
           innovative AI application ideas
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Link to="/ideas">
-            <Button size="lg" className="w-full sm:w-auto">
-              Get Started
-            </Button>
+          <Link
+            to="/ideas"
+            className={cn(buttonVariants({ size: 'lg' }), 'w-full sm:w-auto')}
+          >
+            Get Started
           </Link>
-          <Link to="/about">
-            <Button
-              variant="outline"
-              size="lg"
-              className="w-full sm:w-auto bg-transparent"
-            >
-              Learn More
-            </Button>
+          <Link
+            to="/about"
+            className={cn(
+              buttonVariants({ variant: 'outline', size: 'lg' }),
+              'w-full sm:w-auto bg-transparent',
+            )}
+          >
+            Learn More
           </Link>
         </div>
       </div>

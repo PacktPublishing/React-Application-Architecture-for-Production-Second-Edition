@@ -9,7 +9,7 @@ import {
 } from 'lucide-react';
 import { Link, NavLink } from 'react-router';
 
-import { Button } from '@/components/ui/button';
+import { Button, buttonVariants } from '@/components/ui/button';
 import {
   Sheet,
   SheetContent,
@@ -80,20 +80,24 @@ export function Navigation({ user, onLogout }: NavigationProps) {
     </Button>
   ) : (
     <>
-      <NavLink to="/auth/login" className="w-full md:w-auto">
-        <Button
-          variant="outline"
-          size="sm"
-          className="flex items-center gap-2 w-full bg-transparent"
-        >
-          <LogIn className="h-4 w-4" /> Login
-        </Button>
-      </NavLink>
-      <NavLink to="/auth/register" className="w-full md:w-auto">
-        <Button size="sm" className="flex items-center gap-2 w-full">
-          <UserPlus className="h-4 w-4" /> Register
-        </Button>
-      </NavLink>
+      <Link
+        to="/auth/login"
+        className={cn(
+          buttonVariants({ variant: 'outline', size: 'sm' }),
+          'flex items-center gap-2 w-full bg-transparent md:w-auto',
+        )}
+      >
+        <LogIn className="h-4 w-4" /> Login
+      </Link>
+      <Link
+        to="/auth/register"
+        className={cn(
+          buttonVariants({ variant: 'default', size: 'sm' }),
+          'flex items-center gap-2 w-full md:w-auto',
+        )}
+      >
+        <UserPlus className="h-4 w-4" /> Register
+      </Link>
     </>
   );
 

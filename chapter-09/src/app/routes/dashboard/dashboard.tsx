@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router';
 
 import { Seo } from '@/components/seo';
-import { Button } from '@/components/ui/button';
+import { buttonVariants } from '@/components/ui/button';
 import {
   Card,
   CardContent,
@@ -12,6 +12,7 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import { useAuthorization } from '@/features/auth/hooks/use-authorization';
+import { cn } from '@/lib/utils';
 
 export default function DashboardPage() {
   const { t } = useTranslation(['dashboard']);
@@ -43,17 +44,25 @@ export default function DashboardPage() {
               </CardDescription>
             </CardHeader>
             <CardContent className="flex flex-col space-y-3">
-              <Link to="/dashboard/ideas">
-                <Button className="w-full" variant="default">
-                  {t('dashboard:myIdeas.viewAll')}
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
+              <Link
+                to="/dashboard/ideas"
+                className={cn(
+                  buttonVariants({ variant: 'default' }),
+                  'w-full gap-2',
+                )}
+              >
+                {t('dashboard:myIdeas.viewAll')}
+                <ArrowRight className="h-4 w-4" />
               </Link>
               {canCreateIdea() && (
-                <Link to="/dashboard/ideas/new">
-                  <Button className="w-full bg-transparent" variant="outline">
-                    {t('dashboard:myIdeas.create')}
-                  </Button>
+                <Link
+                  to="/dashboard/ideas/new"
+                  className={cn(
+                    buttonVariants({ variant: 'outline' }),
+                    'w-full bg-transparent',
+                  )}
+                >
+                  {t('dashboard:myIdeas.create')}
                 </Link>
               )}
             </CardContent>
@@ -72,11 +81,15 @@ export default function DashboardPage() {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <Link to="/dashboard/reviews">
-                <Button className="w-full" variant="default">
-                  {t('dashboard:myReviews.viewAll')}
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
+              <Link
+                to="/dashboard/reviews"
+                className={cn(
+                  buttonVariants({ variant: 'default' }),
+                  'w-full gap-2',
+                )}
+              >
+                {t('dashboard:myReviews.viewAll')}
+                <ArrowRight className="h-4 w-4" />
               </Link>
             </CardContent>
           </Card>
@@ -93,11 +106,15 @@ export default function DashboardPage() {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <Link to="/ideas">
-              <Button variant="outline" className="w-full bg-transparent">
-                {t('dashboard:explore.browse')}
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
+            <Link
+              to="/ideas"
+              className={cn(
+                buttonVariants({ variant: 'outline' }),
+                'w-full bg-transparent gap-2',
+              )}
+            >
+              {t('dashboard:explore.browse')}
+              <ArrowRight className="h-4 w-4" />
             </Link>
           </CardContent>
         </Card>
