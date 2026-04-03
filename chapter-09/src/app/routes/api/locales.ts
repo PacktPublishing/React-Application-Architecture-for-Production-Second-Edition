@@ -2,7 +2,8 @@ import { cacheHeader } from 'pretty-cache-header';
 import { data } from 'react-router';
 import { z } from 'zod';
 
-import { resources, type Language } from '@/app/locales';
+import { resources } from '@/app/locales';
+import type { Language } from '@/config/i18n';
 
 import type { Route } from './+types/locales';
 

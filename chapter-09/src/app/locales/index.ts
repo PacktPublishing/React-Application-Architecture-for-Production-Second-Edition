@@ -1,9 +1,7 @@
-import { i18nConfig } from '@/config/i18n';
+import { type Language } from '@/config/i18n';
 
 import en from './en';
 import es from './es';
-
-export type Language = (typeof i18nConfig.supportedLanguages)[number];
 
 export type Resource = typeof en;
 

@@ -3,11 +3,13 @@ export const languages = {
   es: 'Español',
 } as const;
 
-const supportedLanguages = Object.keys(languages) as (keyof typeof languages)[];
+export type Language = keyof typeof languages;
+
+const supportedLanguages = Object.keys(languages) as Language[];
 
 export const i18nConfig = {
   defaultNS: 'common' as const,
-  fallbackLng: supportedLanguages[0],
+  fallbackLng: 'en' as const,
   supportedLanguages,
   backend: {
     loadPath: '/api/locales/{{lng}}/{{ns}}',
@@ -16,5 +18,5 @@ export const i18nConfig = {
     order: ['htmlTag'],
     caches: [],
   },
-  cookieName: 'lng',
+  cookieName: 'lng' as const,
 };

@@ -7,6 +7,7 @@ export default {
   error: 'Error',
   errorRenderingMarkdown: 'Error rendering markdown content',
   goHome: 'Go Home',
+  languageChanged: 'Language changed successfully',
   menu: 'Menu',
   noRatings: 'No ratings',
   oops: 'Oops!',

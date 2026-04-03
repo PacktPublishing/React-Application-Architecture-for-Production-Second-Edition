@@ -8,12 +8,14 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { i18nConfig, languages } from '@/config/i18n';
+import { i18nConfig, languages, type Language } from '@/config/i18n';
+import { useNotificationActions } from '@/stores/notifications';
 
 export function LanguageSwitcher() {
   const { t, i18n } = useTranslation(['components', 'common']);
+  const { showNotification } = useNotificationActions();
 
-  const handleLanguageChange = async (language: string) => {
+  const handleLanguageChange = async (language: Language) => {
     const formData = new FormData();
     formData.append(i18nConfig.cookieName, language);
 
@@ -25,6 +27,13 @@ export function LanguageSwitcher() {
 
       if (response.ok) {
         await i18n.changeLanguage(language);
+
+        showNotification({
+          type: 'success',
+          title: t('common:languageChanged', {
+            lng: language,
+          }),
+        });
       }
     } catch (error) {
       console.error('Failed to change language:', error);
@@ -47,7 +56,7 @@ export function LanguageSwitcher() {
         {Object.entries(languages).map(([key, value]) => (
           <DropdownMenuItem
             key={key}
-            onClick={() => handleLanguageChange(key)}
+            onClick={() => handleLanguageChange(key as Language)}
             className="cursor-pointer"
           >
             <span className="flex items-center gap-2">
