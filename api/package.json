@@ -17,7 +17,7 @@
     "studio": "drizzle-kit studio",
     "reset": "npm run migrate && npm run seed",
     "postinstall": "npm run reset",
-    "setup": "bash setup.sh"
+    "setup": "node setup.js"
   },
   "dependencies": {
     "@hono/node-server": "^1.18.1",
