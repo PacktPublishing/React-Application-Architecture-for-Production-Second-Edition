@@ -30,7 +30,7 @@
     "bcryptjs": "^3.0.2",
     "dotenv": "^17.2.1",
     "dotenv-expand": "^12.0.2",
-    "drizzle-orm": "^0.44.4",
+    "drizzle-orm": "^0.45.2",
     "drizzle-zod": "^0.8.2",
     "hono": "^4.8.12",
     "hono-pino": "^0.10.1",
