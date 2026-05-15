@@ -44,7 +44,7 @@ export default defineConfig({
       ? [
           {
             command:
-              'cp .env.example .env && npm install && npm run build && npm run start',
+              'cp .env.example .env && npm install && npm run build && npm run reset && npm run start',
             url: 'http://localhost:9999',
             cwd: '../api',
             reuseExistingServer: !process.env.CI,
