@@ -30,4 +30,7 @@ JWT_SECRET=019aa5cd${bypassAuthLine}
 writeFileSync(".env", env);
 
 console.log(".env written.");
+
+execSync("npm run reset", { stdio: "inherit" });
+
 console.log("Done.");
