@@ -31,6 +31,6 @@ writeFileSync(".env", env);
 
 console.log(".env written.");
 
-execSync("npm run reset", { stdio: "inherit" });
+execSync("npm run db:prepare", { stdio: "inherit" });
 
 console.log("Done.");

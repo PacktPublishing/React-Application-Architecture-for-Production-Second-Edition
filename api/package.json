@@ -15,7 +15,7 @@
     "migrate": "drizzle-kit migrate",
     "generate": "drizzle-kit generate",
     "studio": "drizzle-kit studio",
-    "reset": "npm run migrate && npm run seed",
+    "db:prepare": "npm run migrate && npm run seed",
     "setup": "node setup.js"
   },
   "dependencies": {
