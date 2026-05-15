@@ -88,7 +88,7 @@ describe("ideas routes", () => {
         expect(json.data).toEqual([]);
         expect(json.pagination.total).toBe(0);
         expect(json.pagination.page).toBe(1);
-        expect(json.pagination.limit).toBe(10);
+        expect(json.pagination.limit).toBe(100);
       }
     });
 

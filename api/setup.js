@@ -23,7 +23,7 @@ const env = `NODE_ENV=development
 PORT=9999
 LOG_LEVEL=debug
 DATABASE_URL=file:dev.db
-CLIENT_URL=http://localhost:5173
+CLIENT_URLS=["http://localhost:3000", "http://localhost:5173"]
 JWT_SECRET=019aa5cd${bypassAuthLine}
 `;
 

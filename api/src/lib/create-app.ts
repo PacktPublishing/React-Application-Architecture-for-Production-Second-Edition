@@ -22,7 +22,7 @@ export default function createApp() {
   const app = createRouter();
   app.use(requestId())
     .use(cors({
-      origin: env.CLIENT_URL,
+      origin: env.CLIENT_URLS,
       credentials: true,
     }))
     .use(serveEmojiFavicon("📝"))

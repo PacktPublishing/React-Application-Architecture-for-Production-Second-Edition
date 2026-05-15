@@ -36,10 +36,12 @@ export function useReviewsByUserQuery({
   useEffect(() => {
     if (!enabled || !username) return;
 
-    setIsLoading(true);
-    setError(null);
-
-    getReviewsByUser({ username })
+    Promise.resolve()
+      .then(() => {
+        setIsLoading(true);
+        setError(null);
+        return getReviewsByUser({ username });
+      })
       .then((result) => {
         setData(result);
         setError(null);
