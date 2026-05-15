@@ -36,10 +36,12 @@ export function useReviewsByIdeaQuery({
   useEffect(() => {
     if (!enabled || !id) return;
 
-    setIsLoading(true);
-    setError(null);
-
-    getReviewsByIdea({ id })
+    Promise.resolve()
+      .then(() => {
+        setIsLoading(true);
+        setError(null);
+        return getReviewsByIdea({ id });
+      })
       .then((result) => {
         setData(result);
         setError(null);

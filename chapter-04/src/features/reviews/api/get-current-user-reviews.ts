@@ -30,10 +30,12 @@ export function useCurrentUserReviewsQuery({
   useEffect(() => {
     if (!enabled) return;
 
-    setIsLoading(true);
-    setError(null);
-
-    getCurrentUserReviews()
+    Promise.resolve()
+      .then(() => {
+        setIsLoading(true);
+        setError(null);
+        return getCurrentUserReviews();
+      })
       .then((result) => {
         setData(result);
         setError(null);

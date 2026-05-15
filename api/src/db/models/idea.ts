@@ -26,7 +26,7 @@ export const ideas = sqliteTable("ideas", {
 
 // Relations will be defined in the main schema file to avoid circular imports
 
-export const selectIdeasSchema = toZodV4SchemaTyped(createSelectSchema(ideas, {
+const _selectIdeasSchema = createSelectSchema(ideas, {
   tags: z.string().transform((str) => {
     try {
       return JSON.parse(str);
@@ -35,7 +35,8 @@ export const selectIdeasSchema = toZodV4SchemaTyped(createSelectSchema(ideas, {
       return [];
     }
   }),
-}));
+});
+export const selectIdeasSchema = toZodV4SchemaTyped(_selectIdeasSchema);
 
 export const insertIdeasSchema = toZodV4SchemaTyped(createInsertSchema(
   ideas,

@@ -29,10 +29,12 @@ export function useTagsQuery({
   useEffect(() => {
     if (!enabled) return;
 
-    setIsLoading(true);
-    setError(null);
-
-    getTags()
+    Promise.resolve()
+      .then(() => {
+        setIsLoading(true);
+        setError(null);
+        return getTags();
+      })
       .then((result) => {
         setData(result);
         setError(null);

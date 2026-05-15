@@ -30,10 +30,12 @@ export function useCurrentUserIdeasQuery({
   useEffect(() => {
     if (!enabled) return;
 
-    setIsLoading(true);
-    setError(null);
-
-    getCurrentUserIdeas()
+    Promise.resolve()
+      .then(() => {
+        setIsLoading(true);
+        setError(null);
+        return getCurrentUserIdeas();
+      })
       .then((result) => {
         setData(result);
         setError(null);

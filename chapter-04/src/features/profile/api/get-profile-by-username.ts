@@ -26,10 +26,12 @@ export function useProfileByUsernameQuery({
   useEffect(() => {
     if (!enabled || !username) return;
 
-    setIsLoading(true);
-    setError(null);
-
-    getProfileByUsername(username)
+    Promise.resolve()
+      .then(() => {
+        setIsLoading(true);
+        setError(null);
+        return getProfileByUsername(username);
+      })
       .then((result) => {
         setData(result);
         setError(null);

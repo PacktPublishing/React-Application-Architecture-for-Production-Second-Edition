@@ -26,10 +26,12 @@ export function useIdeaByIdQuery({
   useEffect(() => {
     if (!enabled || !id) return;
 
-    setIsLoading(true);
-    setError(null);
-
-    getIdeaById(id)
+    Promise.resolve()
+      .then(() => {
+        setIsLoading(true);
+        setError(null);
+        return getIdeaById(id);
+      })
       .then((result) => {
         setData(result);
         setError(null);

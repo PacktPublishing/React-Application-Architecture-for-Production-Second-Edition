@@ -36,10 +36,12 @@ export function useIdeasByUserQuery({
   useEffect(() => {
     if (!enabled || !username) return;
 
-    setIsLoading(true);
-    setError(null);
-
-    getIdeasByUser({ username })
+    Promise.resolve()
+      .then(() => {
+        setIsLoading(true);
+        setError(null);
+        return getIdeasByUser({ username });
+      })
       .then((result) => {
         setData(result);
         setError(null);

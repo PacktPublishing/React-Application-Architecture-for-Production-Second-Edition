@@ -11,6 +11,29 @@ expand(config({
   ),
 }));
 
+/** Env vars are strings; comma-separated URLs or JSON array (as in `.env`). */
+const clientUrlsSchema = z.preprocess(
+  (raw) => {
+    if (Array.isArray(raw))
+      return raw;
+    if (typeof raw !== "string")
+      return raw;
+    const s = raw.trim();
+    if (!s)
+      return raw;
+    if (s.startsWith("[")) {
+      try {
+        return JSON.parse(s) as unknown;
+      }
+      catch {
+        return raw;
+      }
+    }
+    return s.split(",").map(u => u.trim()).filter(Boolean);
+  },
+  z.array(z.url()),
+);
+
 const EnvSchema = z.object({
   NODE_ENV: z.string().default("development"),
   PORT: z.coerce.number().default(9999),
@@ -18,7 +41,7 @@ const EnvSchema = z.object({
   DATABASE_URL: z.string().url(),
   DATABASE_AUTH_TOKEN: z.string().optional(),
   JWT_SECRET: z.string(),
-  CLIENT_URL: z.string().url(),
+  CLIENT_URLS: clientUrlsSchema,
   BYPASS_AUTH: z.string().optional(),
 }).superRefine((input, ctx) => {
   if (input.NODE_ENV === "production" && !input.DATABASE_AUTH_TOKEN) {
