@@ -1,11 +1,14 @@
 # Chapter 11: Testing the Application
 
 ## Requirements:
+
 - Node.js version 24 or above, npm version 11 or above ships with Node. We can confirm that by executing node -v and npm -v in the terminal. There are multiple ways to install Node.js and npm. Here is a great article that goes into more detail: https://www.nodejsdesignpatterns.com/blog/5-ways-to-install-node-js.
 - A text editor or IDE. We recommend VS Code: https://code.visualstudio.com.
 
 ## Setup
+
 0. Make sure you are in the current chapter's directory:
+
 ```sh
 cd chapter-11
 ```
